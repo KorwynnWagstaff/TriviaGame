@@ -15,7 +15,7 @@ $(document).ready(function() {
 	}
 	function displayQuestionsAnswers() {
 		var questionsAnswersHTML = "<p class='timer-p'>Time Left: <span class='timer'>30</span></p>" + 
-		"<p>" + questions[questionCounter] + "</p>" + 
+		"<p class='question'>" + questions[questionCounter] + "</p>" + 
 		"<p class='answer'>A. " + answers[questionCounter][0] + "</p>" + 
 		"<p class='answer'>B. " + answers[questionCounter][1] + "</p>" +
 		"<p class='answer'>C. " + answers[questionCounter][2] + "</p>" + 
@@ -37,19 +37,19 @@ $(document).ready(function() {
 	}
 	function timeoutLoss() {
 		timeoutCounter++;
-		var timeoutHTML = "<p>Time's up! Next question!</p>"; 
+		var timeoutHTML = "<p class='timeout'>Time's up! Next question!</p>"; 
 		$("#quizArea").html(timeoutHTML);
 		setTimeout(chkQuestionCounter, 3000);
 	}
 	function correctAnswer() {
 		correctCounter++;
-		var winHTML = "<p>Correct!</p>";
+		var winHTML = "<p class='correct'>Correct!</p>";
 		$("#quizArea").html(winHTML);
 		setTimeout(chkQuestionCounter, 3000);
 	}
 	function incorrectAnswer() {
 		incorrectCounter++;
-		var loseHTML = "<p>Incorrect! Correct answer is " + correctAnswers[questionCounter]; + "</p";
+		var loseHTML = "<p class='incorrect'>Incorrect! Correct answer is " + correctAnswers[questionCounter]; + "</p";
 		$("#quizArea").html(loseHTML); 
 		setTimeout(chkQuestionCounter, 3000);
 	}
@@ -65,10 +65,10 @@ $(document).ready(function() {
 		}
 	}
 	function displayResetScreen() {
-		var resetHTML =  "<p>End of Quiz!</p>" + 
-		"<p>Correct Count: " + correctCounter + "</p>" +
-		"<p>Incorrect Count: " + incorrectCounter + "</p>" +
-		"<p>Unanswered Count: " + timeoutCounter + "</p>" + 
+		var resetHTML =  "<p class='score'>End of Quiz!</p>" + 
+		"<p class='score'>Correct Count: " + correctCounter + "</p>" +
+		"<p class='score'>Incorrect Count: " + incorrectCounter + "</p>" +
+		"<p class='score'>Unanswered Count: " + timeoutCounter + "</p>" + 
 		"<button class='btnReset'>Reset</button>";
 		$("#quizArea").html(resetHTML);
 	}
